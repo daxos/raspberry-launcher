@@ -1,0 +1,12 @@
+# Gambas Project File 3.0
+# Compiled with Gambas 3.2.1
+Title=Launcher
+Startup=claseinicio
+Version=0.0.5
+Component=gb.image
+Component=gb.qt4
+Component=gb.form
+Component=gb.qt4.webkit
+Component=gb.web
+TabSize=2
+Packager=1

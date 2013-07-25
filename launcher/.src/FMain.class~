@@ -1,0 +1,17 @@
+' Gambas class file
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+
+IconView1.Add("1", "Navegar por internet", Picture["images/firefox.png"])
+IconView1.Add("2", "Escribir documento", Picture["images/notepad.png"])
+IconView1.Add("3", "Mandar correo", Picture["images/mail.png"])
+IconView1.Add("4", "Ver la televisión", Picture["images/tv.png"])
+IconView1.Add("5", "Escuchar música", Picture["images/music.png"])
+IconView1.Add("6", "Ver vídeos", Picture["images/video.png"])
+Timer1.Enabled = True
+
+End

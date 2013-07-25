@@ -1,0 +1,498 @@
+' Gambas class file
+
+
+Private $sLastLink As String
+Public usercookies As Cookie[]
+Public actual As WebView
+
+Public Sub _new()
+'cuentadesc.Enabled = False
+actual = TabStrip1.Children[0]
+TextBox1.SetFocus
+TabStrip1.Picture = Stock["16/html"] 
+WebSettings[WebSettings.PluginsEnabled] = True
+WebSettings[WebSettings.JavascriptCanOpenWindows] = True
+WebSettings[WebSettings.JavascriptEnabled] = True
+WebView1.SetFocus
+WebView1 = TabStrip1.Children[0]
+'WebSettings[WebSettings.DeveloperExtrasEnabled] = True
+'paneldesc.Arrangement = 3
+
+ 
+End
+
+Public Sub Form_Open()
+
+Dim hView As WebView
+Dim inicio As String
+
+IconView1.Add("1", "Descargas", Picture["download.png"])
+IconView1.Add("2", "Acerca de", Picture["help-contents.svg"])
+IconView1.Add("3", "Activar/desactivar flash player", Picture["application-x-flash-video.svg"])
+IconView1.Add("4", "Descargar vídeo", Picture["youtube.png"])
+IconView1.Add("5", "Reproducir vídeo de youtube", Picture["media-playback-start.svg"])
+IconView1.Add("6", "Navegación privada", Picture["private.png"])
+IconView1.Add("7", "Java", Picture["java.png"])
+IconView1.Add("8", "Opciones", Picture["document-properties.svg"])
+Me.Center
+actual = TabStrip1.Children[0]
+    hView = GetView()
+  TabStrip1.Picture = hView.Icon
+  'WebSettings[WebSettings.PluginsEnabled] = True
+  WebSettings[WebSettings.JavascriptEnabled] = True
+  WebSettings[WebSettings.JavaEnabled] = True
+ComboBox1.Add("Google")
+ComboBox1.Add("DuckDuckGO")
+ComboBox1.Add("Yahoo")
+Shell "cat ~/.daxos/lime/config" To inicio
+WebView1.url = RTrim$(inicio)
+TextBox1.Text = RTrim$(inicio)
+WebView1.SetFocus
+Me.y = Me.y + 20
+'WebView1.Zoom = 0.7
+
+ bookmarklist()
+  
+  For Each favoritador.tag In ListContainer1.Children
+    ListBox1.Add(favoritador.Tag.text)
+  Next
+
+End
+
+Public Sub urlbox_Activate()
+  go_Click
+End
+
+Private Sub GetView() As WebView
+    Return TabStrip1.Children[0]
+  
+End
+
+
+Public Sub go_Click()
+
+Dim hView As WebView
+
+Dim sText As String = TextBox1.Text
+  
+  WebView1 = TabStrip1.Children[0]
+  
+  If InStr(sText, "://") = 0 Then sText = "http://" & sText
+  
+  $sLastLink = sText
+  GetView().Url = sText
+
+ hView = GetView()
+TabStrip1.Picture = hView.Icon
+'WebView1.Url = TextBox1.text
+ TabStrip1.Text = WebView1.Title
+ HBox2.Hide
+ PictureBox2.picture = Picture.Load("images/logo-lime.png")
+ PictureBox1_MouseDown()
+ 
+End
+
+Public Sub adelante_Click()
+
+    WebView1 = TabStrip1.Children[0]
+    WebView1.Forward
+     TabStrip1.Text = WebView1.Title
+    
+End
+
+Public Sub before_Click()
+
+     WebView1 = TabStrip1.Children[0]
+    WebView1.back
+    TabStrip1.Text = WebView1.Title
+
+End
+
+Public Sub actualizar_Click()
+
+  WebView1 = TabStrip1.Children[0]
+  WebView1.Reload
+  TabStrip1.Current.Text = actual.Title
+
+End
+
+Public Sub add_Click()
+
+ TabStrip1.Count = TabStrip1.Count + 1
+ WebView1 = New WebView(TabStrip1) As "WebView1"
+ TabStrip1.Picture = Stock["16/html"]
+ TabStrip1.Current.Text = "..."
+ TabStrip1.Children[0].Name = "pagina" & CStr(TabStrip1.Index + 1)
+ TextBox1.SetFocus
+
+End
+
+
+Public Sub form_Close()
+  
+Me.Close
+  
+End
+
+
+Public Sub TabStrip1_Close(Index As Integer)
+  
+  If TabStrip1.Count > 1 Then
+  Object.Lock(TabStrip1)   
+  actual = TabStrip1.Children[0]
+  actual.Delete
+  Object.Unlock(TabStrip1)
+  TabStrip1.Current.Delete
+ 
+  
+  
+  Else
+  f_navegador.Close
+  Endif
+  
+End
+
+Private Sub IsLastCurrentView() As Boolean
+  
+  Dim hView As WebView = GetView()
+  Return hView = Last
+  WebView1 = TabStrip1.Children[0]
+  
+End
+
+Public Sub CreateView()
+    add_Click
+End
+
+
+
+Public Sub WebView1_NewWindow(modal As Boolean)
+
+  add_Click
+  Last.NewView = GetView()
+  
+End
+
+
+
+Public Sub PictureBox2_MouseDown()
+
+actual = TabStrip1.Children[0]
+TextBox1.Text = actual.Url
+HBox2.Show
+PictureBox2.picture = Picture.Load("images/logo-lime-blue.png")
+PictureBox1.Show
+PictureBox1.picture = Picture.Load("images/logo-lime-blue.png")
+
+
+End
+
+Public Sub home_Click()
+
+Dim hView As WebView
+Dim inicio As String
+
+  Shell "cat ~/.daxos/lime/config" To inicio
+  Wait 0.4
+  WebView1 = TabStrip1.Children[0]
+  hView = GetView()
+  TabStrip1.Picture = hView.Icon
+  WebView1.url = RTrim$(inicio)
+  TextBox1.Text = RTrim$(inicio)
+  Wait 0.4
+  TabStrip1.Current.Text = WebView1.Title
+
+
+End
+
+
+Public Sub WebView1_Progress()
+  
+  WebView1 = TabStrip1.Children[0]
+ ' actual = TabStrip1.Children[0]
+  progreso.Value = WebView1.Progress
+  
+End
+
+Public Sub WebView1_Title()
+
+   WebView1 = TabStrip1.Children[0]
+  TabStrip1.Current.Text = WebView1.Title
+  Me.Title = WebView1.Title & " - Lime Web Browser"
+  
+End
+
+Public Sub ajustes_Click()
+
+HBox5.show
+ajustes2.show
+
+End
+
+Public Sub ajustes2_Click()
+
+HBox5.Hide
+ajustes2.hide
+
+End
+
+
+
+
+
+Public Sub WebView1_Click(Frame As WebFrame)
+  
+  Dim sName As String = Frame.Name
+  If sName Then sName &= ": "
+  Debug sName; Frame.Url
+  
+End
+
+Public Sub WebView1_NewFrame(Frame As WebFrame)
+  
+  Debug Frame.Name
+  
+End
+
+Public Sub go2_Click()
+
+Dim hView As WebView
+
+  hView = GetView()
+  TabStrip1.Picture = hView.Icon
+
+  WebView1 = TabStrip1.Children[0]
+  
+
+If ComboBox1.Text = "Google" Then
+  WebView1.Url = "http://google.com"
+  TabStrip1.Text = WebView1.Title
+Endif
+
+If ComboBox1.Text = "DuckDuckGO" Then
+  WebView1.Url = "http://duckduckgo.com"
+  TabStrip1.Text = WebView1.Title
+Endif
+
+If ComboBox1.Text = "Yahoo" Then
+  WebView1.Url = "http://yahoo.com"
+  TabStrip1.Text = WebView1.Title
+Endif
+
+HBox2.Hide
+PictureBox2.picture = Picture.Load("images/logo-lime.png")
+PictureBox1_MouseDown()
+
+End
+
+
+Public Sub youdownload_Click()
+
+Dim video As String 
+video = WebView1.Url
+
+Shell "youtube-dl " & video & " ~/"
+
+End
+
+Public Sub youplay_Click()
+
+Shell "lxterminal -e  mplayer -cache 200  $(youtube-dl -g --max-quality mp4 " & WebView1.Url & ")"
+hbox5.Hide
+ajustes2.Hide
+
+End
+
+
+Public Sub WebView1_enter()
+  
+  TabStrip1.Children[0].h = TabStrip1.h
+  TabStrip1.Children[0].w = TabStrip1.w
+ ' TabStrip1.Current.Text = WebView1.Title
+
+End
+
+Public Sub PictureBox1_MouseDown()
+
+HBox2.Hide
+PictureBox2.picture = Picture.Load("images/logo-lime.png")
+PictureBox2.Show
+PictureBox1.Hide
+
+End
+
+
+
+Public Sub TextBox1_Activate()
+
+go_Click
+
+End
+
+Public Sub favoritos_Click()
+
+Dim textofav As String
+  actual = TabStrip1.Children[0]
+  If actual.Url Then
+    textofav = (actual.Title & ";" & actual.Url)
+      If ListBox1.Find(textofav) = - 1 Then
+       ListBox1.Add(textofav)
+      grabar()
+      agregafav(textofav)
+     Endif
+    
+  Endif
+
+End
+
+Public Sub grabar()
+  
+  File.Save(system.User.Home &/ ".lime_fav", ListBox1.List.Join("\n"))
+  
+End
+
+Public Sub agregafav(bmarktxt As String)
+   Dim fav1 As New Favoritador
+   fav1 = New Favoritador(ListContainer1)
+   fav1.Init(bmarktxt)
+   fav1.Text = bmarktxt
+   fav1.Tag = bmarktxt
+   'fav1.ShowModal
+End
+
+Public Sub bookmarklist()
+Dim rutafav As String
+Dim item As String
+Dim archivo As File
+rutafav = system.User.Home &/ ".lime_fav"
+If Exist(rutafav) Then
+archivo = Open rutafav For Input
+While Not Eof(archivo)
+  Line Input #archivo, item
+  agregafav(item)
+Wend
+Endif
+End
+
+Public Sub quitafav(bmarktxt As String)
+  ListBox1.Remove(ListBox1.Find(bmarktxt))
+End
+
+Public Sub abrefav(direccion As String)
+  
+  actual = TabStrip1.Children[0]
+  TextBox1.Text = direccion
+  go_Click
+  
+End
+
+
+Public Sub favs_Click()
+
+If TabStrip1.Visible = True Then
+TabStrip1.Hide
+Panel13.Hide
+HBox6.Show
+hbox5.Show
+Else
+  TabStrip1.show
+  Panel13.show
+  HBox6.hide
+  hbox5.hide
+Endif
+End
+
+
+Public Sub IconView1_Click()
+
+ Dim titulos As Boolean
+ Dim video As String 
+ 
+   If Not IsNull(IconView1.Current) Then
+    Select Case IconView1.Current.Key
+     Case 1
+     
+     hbox5.Hide
+     ajustes2.Hide
+     IconView1.UnselectAll
+     Case 2
+     
+     hbox5.Hide
+     ajustes2.Hide
+     IconView1.UnselectAll
+     Case 3
+     If WebSettings[WebSettings.PluginsEnabled] = True Then
+       WebSettings[WebSettings.PluginsEnabled] = False
+       Message.Info("Flash player desactivado")
+       Else
+         WebSettings[WebSettings.PluginsEnabled] = True
+         Message.Info("Flash player activado")
+     Endif
+     hbox5.Hide
+     ajustes2.Hide
+     IconView1.UnselectAll
+     Case 4
+      video = WebView1.Url
+      Shell "youtube-dl " & video & " ~/"
+      hbox5.Hide
+      ajustes2.Hide
+      IconView1.UnselectAll
+     Case 5
+      Shell "lxterminal -e  mplayer -cache 200  $(youtube-dl -g --max-quality mp4 " & WebView1.Url & ")"
+      hbox5.Hide
+      ajustes2.Hide
+      IconView1.UnselectAll
+     Case 6
+      If WebSettings[WebSettings.PrivateBrowsingEnabled] = True Then
+       WebSettings[WebSettings.PrivateBrowsingEnabled] = False
+       Message.Info("Navegación privada desactivada")
+       f_navegador.Icon = Picture["browser.png"]
+       Else
+         WebSettings[WebSettings.PrivateBrowsingEnabled] = True
+         Message.Info("Navegación privada activada")
+         f_navegador.Icon = Picture["private.png"]
+     Endif
+      
+      hbox5.Hide
+      ajustes2.Hide
+      IconView1.UnselectAll
+      
+      Case 7
+      If WebSettings[WebSettings.JavaEnabled] = True Then
+       WebSettings[WebSettings.JavaEnabled] = False
+       Message.Info("Java desactivado")
+       Else
+         WebSettings[WebSettings.JavaEnabled] = True
+         Message.Info("java activado")
+     Endif
+      
+      hbox5.Hide
+      ajustes2.Hide
+      IconView1.UnselectAll
+
+      Case 8
+     'f_settings.Show
+      hbox5.Hide
+      ajustes2.Hide
+      IconView1.UnselectAll
+
+      End Select
+        Endif
+
+End
+
+Public Sub actual_enter()
+  
+  TabStrip1.Children[0].h = TabStrip1.h
+  TabStrip1.Children[0].w = TabStrip1.w
+  TabStrip1.Current.Text = TabStrip1.Children[0].url
+End
+
+
+
+
+Public Sub HBox4_MouseDown()
+
+  
+
+End

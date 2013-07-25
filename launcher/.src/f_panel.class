@@ -1,0 +1,18 @@
+' Gambas class file
+
+
+Public Sub Form_Open()
+
+  
+
+End
+
+Public Sub lanzador_Click()
+
+If f_aplicaciones.Visible = True Then
+  f_aplicaciones.Hide 
+  Else
+    f_aplicaciones.Show
+Endif
+
+End

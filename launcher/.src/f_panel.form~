@@ -1,0 +1,12 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,136,6)
+  Background = &H1B1B1B&
+  Border = False
+  SkipTaskbar = True
+  { lanzador ToolButton
+    MoveScaled(2,0,6,6)
+    Picture = Picture["images/daxos_icon_64x64.png"]
+  }
+}

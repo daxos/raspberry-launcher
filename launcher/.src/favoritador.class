@@ -1,0 +1,49 @@
+' Gambas class file
+
+
+Private $bookmark As String
+
+Public Sub Init(bookmark As String)
+  $bookmark = bookmark
+End
+  
+Public Sub Form_Open()
+ Dim datos As New String[]
+With $bookmark
+  datos = Split($bookmark, ";")
+  titulot.Text = datos[0]
+  direct.Text = datos[1]
+End With
+  titulot.Font.Bold = True
+  direct.Font.Size = 8
+  
+
+End
+
+Public Sub ira_Click()
+  f_navegador.add_click
+  f_navegador.abrefav(direct.Text)
+  f_navegador.favs_click
+End
+
+Public Sub Panel2_DblClick()
+  ira_Click
+End
+
+Public Sub ira2_Click()
+Dim respuesta As Integer
+  respuesta = Message.Question("Borrar este marcador?", "si", "no ")
+  If respuesta = 1 Then
+    f_navegador.quitafav(Me.Text)
+  f_navegador.grabar()
+  Me.Delete
+  Endif
+End
+
+Public Sub titulot_DblClick()
+  ira_Click
+End
+
+Public Sub direct_DblClick()
+ ira_Click
+End

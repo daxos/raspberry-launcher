@@ -1,0 +1,95 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,149,94)
+  Background = &H181C18&
+  Resizable = False
+  Border = False
+  SkipTaskbar = True
+  { TabStrip1 TabStrip
+    MoveScaled(0,8,150,87)
+    Background = &H1F1F1F&
+    Count = 6
+    Index = 0
+    Text = ("Home")
+    { IconView1 IconView
+      MoveScaled(72,10,76,58)
+      GridSize = 35
+      IconLines = 3
+      Border = False
+    }
+    { WebView1 WebView
+      MoveScaled(3,10,65,67)
+      Url = "http://duckduckgo.com/&t=daxos"
+    }
+    { Label2 Label
+      MoveScaled(3,3,34,4)
+      Font = Font["+6"]
+      Text = ("Búsqueda rápida")
+    }
+    { Label3 Label
+      MoveScaled(81,3,34,4)
+      Font = Font["+6"]
+      Text = ("Accesos rápidos")
+    }
+    Index = 1
+    Text = ("Accesorios")
+    { IconView2 IconView
+      MoveScaled(3,5,145,74)
+      GridSize = 35
+      IconLines = 3
+      Border = False
+    }
+    Index = 2
+    Text = ("Internet")
+    { IconView3 IconView
+      MoveScaled(3,1,145,74)
+      GridSize = 35
+      IconLines = 3
+      Border = False
+    }
+    Index = 3
+    Text = ("Entretenimiento")
+    Index = 4
+    Text = ("Sonido")
+    { Slider1 Slider
+      MoveScaled(36,16,58,4)
+    }
+    { ToolButton1 ToolButton
+      MoveScaled(21,43,18.2857,18.2857)
+      Picture = Picture["images/alesis_m1_active_mk2_speakers_1.png"]
+    }
+    { Label4 Label
+      MoveScaled(10,33,32,4)
+      Font = Font["Serif,+5"]
+      Text = ("Otros")
+    }
+    { PictureBox1 PictureBox
+      MoveScaled(15,10,16,16)
+      Picture = Picture["images/speaker_yellow.png"]
+      Stretch = True
+    }
+    { Label5 Label
+      MoveScaled(20,61,24,4)
+      Font = Font["Serif,+1"]
+      Text = ("Gnome Alsa Mixer")
+    }
+    { Label6 Label
+      MoveScaled(10,4,32,4)
+      Font = Font["Serif,+5"]
+      Text = ("Control de sonido")
+    }
+    { Separator1 Separator
+      MoveScaled(4,36,42,4)
+    }
+    Index = 5
+    Text = ("Configuración")
+    Index = 0
+  }
+  { Label1 Label
+    MoveScaled(2,2,28,4)
+    Font = Font["+6"]
+    Foreground = &HFFFFFF&
+    Text = ("Aplicaciones")
+  }
+}

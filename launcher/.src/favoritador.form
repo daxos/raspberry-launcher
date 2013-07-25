@@ -1,0 +1,53 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,7)
+  Border = False
+  { HBox1 HBox
+    MoveScaled(0,0,65,7)
+    Expand = True
+    AutoResize = True
+    Padding = 2
+    { Panel1 Panel
+      MoveScaled(0,0,63,7)
+      Expand = True
+      Arrangement = Arrange.Horizontal
+      AutoResize = True
+      { ira Button
+        MoveScaled(1,0,6.8571,6.8571)
+        Picture = Picture["icon:/32/internet"]
+      }
+      { Panel2 Panel
+        MoveScaled(10,0,41,7)
+        Expand = True
+        { titulot Label
+          MoveScaled(2,0,17,4)
+          Padding = 2
+          AutoResize = True
+        }
+        { direct Label
+          MoveScaled(2,3,30,4)
+          Padding = 1
+          AutoResize = True
+          Alignment = Align.Left
+        }
+      }
+      { Separator1 Separator
+        MoveScaled(53,0.1429,1,6)
+      }
+      { Panel3 Panel
+        MoveScaled(55,0,6,7)
+        Arrangement = Arrange.Vertical
+        { Panel4 Panel
+          MoveScaled(0,-1,2,1)
+          Expand = True
+        }
+        { ira2 Button
+          MoveScaled(0,0,5,5)
+          Picture = Picture["icon:/32/delete"]
+          Border = False
+        }
+      }
+    }
+  }
+}

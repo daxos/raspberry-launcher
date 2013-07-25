@@ -1,0 +1,13 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,81,53)
+  Border = False
+  Maximized = True
+  Arrangement = Arrange.Vertical
+  { IconView1 IconView
+    MoveScaled(19,12,16,16)
+    Expand = True
+    Border = False
+  }
+}

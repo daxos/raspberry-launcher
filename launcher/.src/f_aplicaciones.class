@@ -1,0 +1,125 @@
+' Gambas class file
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+
+Label1.SetFocus
+IconView1.SetFocus
+Label6.SetFocus
+Me.Center
+IconView1.Add("1", "Navegar por internet", Picture["images/firefox.png"])
+IconView1.Add("2", "Escribir documento", Picture["images/notepad.png"])
+IconView1.Add("5", "Escuchar música", Picture["images/music.png"])
+IconView1.Add("6", "Ver vídeos", Picture["images/video.png"])
+
+IconView2.Add("1", "Lxterminal", Picture["images/terminal.png"])
+IconView2.Add("2", "Leafpad", Picture["images/notepad.png"])
+IconView2.Add("3", "Thunar", Picture["images/thunar.png"])
+IconView2.Add("4", "Calculadora", Picture["images/calculator.png"])
+
+IconView3.Add("1", "Navegador Lima", Picture["images/firefox.png"])
+IconView3.Add("2", "Navegador Netsurf", Picture["images/navegador.png"])
+
+'Timer1.Enabled = True
+
+End
+
+Public Sub IconView1_Click()
+
+   Dim titulos As Boolean
+ Dim video As String 
+ 
+   If Not IsNull(IconView1.Current) Then
+    Select Case IconView1.Current.Key
+     Case 1
+     f_navegador.Show
+     Me.Close
+     Case 2
+       
+       Shell "leafpad"
+       Me.Close
+       
+      Case 3
+       
+       
+      Case 4
+       
+       
+       Case 6
+         Dialog.Path = video
+         If Dialog.OpenFile() Then Return
+         video = Dialog.Path
+         Shell "lxterminal -e omxplayer -o hdmi " & video
+         Me.Close
+       
+       Case 7
+       
+       
+       Case 8
+      
+       
+       Case 9
+      
+     
+    
+   End Select
+        Endif
+
+End
+
+Public Sub IconView2_Click()
+
+Dim titulos As Boolean
+ Dim video As String 
+ 
+   If Not IsNull(IconView2.Current) Then
+    Select Case IconView2.Current.Key
+  Case 1
+     Shell "lxterminal"
+     Me.Close
+     Case 2
+       
+       Shell "leafpad"
+       Me.Close
+       
+      Case 3
+       Shell "thunar"
+       Me.Close
+       
+      Case 4
+       Shell "gcalc"
+       Me.close
+        
+       
+       End Select
+        Endif
+
+End
+
+Public Sub IconView3_Click()
+
+Dim titulos As Boolean
+ Dim video As String 
+ 
+   If Not IsNull(IconView3.Current) Then
+    Select Case IconView3.Current.Key
+  Case 1
+     f_navegador.Show
+     Me.Close
+     Case 2
+       Shell "netsurf-gtk %u"
+       Me.Close
+     
+      Case 4
+       
+        
+       
+       End Select
+        Endif
+
+End
+
+
