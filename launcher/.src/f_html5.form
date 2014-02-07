@@ -1,0 +1,15 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,121,89)
+  Background = &HFFFFFF&
+  Border = False
+  { WebView1 WebView
+    MoveScaled(0,0,121,84)
+  }
+  { cerrar ToolButton
+    MoveScaled(106,84,14,5)
+    Text = ("Cerrar")
+    Picture = Picture["icon:/32/delete"]
+  }
+}

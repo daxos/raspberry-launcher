@@ -1,0 +1,71 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,64)
+  Background = &HEBEBEB&
+  Text = ("Music player")
+  { btnplay ToolButton
+    MoveScaled(28,42,10,9)
+    Picture = Picture["Imagenes/playb.png"]
+  }
+  { !btnnext ToolButton
+    MoveScaled(44,42,12,10)
+    #Public = True
+    Picture = Picture["Imagenes/nextb.png"]
+  }
+  { FileView1 FileView
+    MoveScaled(69,0,80,76)
+    Background = &HE2E2E2&
+    Border = False
+    Mode = Select.Single
+    Dir = "~/"
+    ShowDirectory = True
+    ShowPreview = True
+  }
+  { btnpause ToolButton
+    MoveScaled(28,42,10,9)
+    Visible = False
+    Picture = Picture["Imagenes/pauseb.png"]
+  }
+  { MovieBox1 MovieBox
+    MoveScaled(18,13,31,26)
+    Path = "images/a.gif"
+    Alignment = Align.Center
+  }
+  { before ToolButton
+    MoveScaled(10,43,11,7)
+    Picture = Picture["Imagenes/previousb.png"]
+  }
+  { dwgMoviePlayer DrawingArea
+    MoveScaled(1,26,16,17)
+    Visible = False
+    Enabled = False
+    Background = &HEBEBEB&
+    Arrangement = Arrange.Fill
+    Cached = True
+    Focus = True
+  }
+  { cerrar ToolButton
+    MoveScaled(55,70,13,4)
+    Text = ("Cerrar")
+    Picture = Picture["icon:/32/halt"]
+  }
+  { timShow #Timer
+    #MoveScaled(1,0)
+    Delay = 500
+  }
+  { musicaimg PictureBox
+    MoveScaled(18,14,31,24)
+    Picture = Picture["images/multimedia-audio-player.svg"]
+    Alignment = Align.Center
+  }
+  { cerrar2 ToolButton
+    MoveScaled(50,59,13,4)
+    Text = ("Cerrar")
+    Picture = Picture["icon:/32/halt"]
+  }
+  { abrir ToolButton
+    MoveScaled(0,57,7,7)
+    Picture = Picture["icon:/32/open"]
+  }
+}

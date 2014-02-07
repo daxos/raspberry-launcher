@@ -34,13 +34,12 @@ IconView1.Add("5", "Reproducir vídeo de youtube", Picture["media-playback-start
 IconView1.Add("6", "Navegación privada", Picture["private.png"])
 IconView1.Add("7", "Java", Picture["java.png"])
 IconView1.Add("8", "Opciones", Picture["document-properties.svg"])
-Me.Center
 actual = TabStrip1.Children[0]
     hView = GetView()
   TabStrip1.Picture = hView.Icon
   'WebSettings[WebSettings.PluginsEnabled] = True
-  WebSettings[WebSettings.JavascriptEnabled] = True
-  WebSettings[WebSettings.JavaEnabled] = True
+  WebSettings[WebSettings.JavascriptEnabled] = False
+  WebSettings[WebSettings.JavaEnabled] = False
 ComboBox1.Add("Google")
 ComboBox1.Add("DuckDuckGO")
 ComboBox1.Add("Yahoo")
@@ -49,7 +48,8 @@ WebView1.url = RTrim$(inicio)
 TextBox1.Text = RTrim$(inicio)
 WebView1.SetFocus
 'WebView1.Zoom = 0.7
-
+Me.x = 70
+Me.y = 45
  bookmarklist()
   
   For Each favoritador.tag In ListContainer1.Children
@@ -489,3 +489,15 @@ End
 
 
 
+
+Public Sub HBox4_MouseDown()
+
+  
+
+End
+
+Public Sub salir_Click()
+
+Me.Close
+
+End

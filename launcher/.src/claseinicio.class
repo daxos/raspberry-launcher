@@ -3,6 +3,7 @@
 Static Public Sub Main()
 
 f_fondo.Show
+f_lateralbar.Show
 f_panel.Show
 'f_aplicaciones.Show
 'f_clock.Show

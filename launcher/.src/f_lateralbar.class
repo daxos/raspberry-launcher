@@ -1,0 +1,45 @@
+' Gambas class file
+
+
+Public Sub Form_Open()
+
+IconView1.Add("1", "", Picture["Imagenes/carpeta.svg"])
+IconView1.Add("2", "", Picture["Imagenes/multimedia-audio-player.svg"])
+IconView1.Add("3", "", Picture["Imagenes/totem.svg"])
+IconView1.Add("4", "", Picture["Imagenes/web-browser.svg"])
+
+End
+
+Public Sub IconView1_Click()
+
+    Dim titulos As Boolean
+ Dim video As String 
+ 
+   If Not IsNull(IconView1.Current) Then
+    Select Case IconView1.Current.Key
+     Case 1
+     Shell "thunar"
+     IconView1.UnselectAll
+     
+     Case 2
+       
+       f_music.Show
+       IconView1.UnselectAll
+       
+      Case 3
+       
+       Dialog.Path = video
+         If Dialog.OpenFile() Then Return
+         video = Dialog.Path
+         Shell "lxterminal -e omxplayer -o hdmi " & video
+       
+      Case 4
+     
+      f_navegador.Show
+      IconView1.UnselectAll
+     
+    
+   End Select
+        Endif
+
+End

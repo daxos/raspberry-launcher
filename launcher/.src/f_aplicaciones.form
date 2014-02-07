@@ -2,38 +2,46 @@
 
 { Form Form
   MoveScaled(0,0,149,94)
-  Background = &H181C18&
+  Background = &H0C0C0C&
   Resizable = False
   Border = False
   SkipTaskbar = True
   { TabStrip1 TabStrip
-    MoveScaled(0,8,150,87)
-    Background = &H1F1F1F&
+    MoveScaled(0,7,150,87)
+    Background = &H0E0E0E&
     Count = 6
     Index = 0
     Text = ("Home")
-    { IconView1 IconView
-      MoveScaled(72,10,76,58)
-      GridSize = 35
-      IconLines = 3
-      Border = False
-    }
-    { WebView1 WebView
-      MoveScaled(3,10,65,67)
-      Url = "http://duckduckgo.com/&t=daxos"
-    }
-    { Label2 Label
-      MoveScaled(3,3,34,4)
-      Font = Font["+6"]
-      Text = ("Búsqueda rápida")
-    }
-    { Label3 Label
-      MoveScaled(81,3,34,4)
-      Font = Font["+6"]
-      Text = ("Accesos rápidos")
+    { Panel1 Panel
+      MoveScaled(-1,-1,153,84)
+      Background = &HFFFFFF&
+      { IconView1 IconView
+        MoveScaled(72,12,76,61)
+        GridSize = 35
+        IconLines = 3
+        Border = False
+      }
+      { Label3 Label
+        MoveScaled(79,5,34,4)
+        Font = Font["+6"]
+        Text = ("Quick Apps")
+      }
+      { Label2 Label
+        MoveScaled(6,5,34,4)
+        Font = Font["+6"]
+        Text = ("Quick Search")
+      }
+      { WebView1 WebView
+        MoveScaled(7,12,68,65)
+        Url = "http://duckduckgo.com/&t=daxos"
+      }
+      { limabrowser ToolButton
+        MoveScaled(7,79,4,4)
+        Picture = Picture["images/browser.png"]
+      }
     }
     Index = 1
-    Text = ("Accesorios")
+    Text = ("Accesories")
     { IconView2 IconView
       MoveScaled(3,5,145,74)
       GridSize = 35
@@ -49,47 +57,61 @@
       Border = False
     }
     Index = 3
-    Text = ("Entretenimiento")
-    Index = 4
-    Text = ("Sonido")
-    { Slider1 Slider
-      MoveScaled(36,16,58,4)
+    Text = ("Games")
+    { IconView4 IconView
+      MoveScaled(3,1,145,74)
+      GridSize = 35
+      IconLines = 3
+      Border = False
     }
+    Index = 4
+    Text = ("Multimedia")
     { ToolButton1 ToolButton
-      MoveScaled(21,43,18.2857,18.2857)
+      MoveScaled(21,48,18.2857,18.2857)
+      Visible = False
       Picture = Picture["images/alesis_m1_active_mk2_speakers_1.png"]
     }
     { Label4 Label
-      MoveScaled(10,33,32,4)
+      MoveScaled(10,41,32,4)
+      Visible = False
       Font = Font["Serif,+5"]
-      Text = ("Otros")
-    }
-    { PictureBox1 PictureBox
-      MoveScaled(15,10,16,16)
-      Picture = Picture["images/speaker_yellow.png"]
-      Stretch = True
+      Text = ("Other")
     }
     { Label5 Label
-      MoveScaled(20,61,24,4)
+      MoveScaled(20,66,24,4)
+      Visible = False
       Font = Font["Serif,+1"]
       Text = ("Gnome Alsa Mixer")
     }
     { Label6 Label
-      MoveScaled(10,4,32,4)
+      MoveScaled(8,3,32,4)
       Font = Font["Serif,+5"]
-      Text = ("Control de sonido")
+      Text = ("Multimedia Apps")
     }
-    { Separator1 Separator
-      MoveScaled(4,36,42,4)
+    { IconView5 IconView
+      MoveScaled(7,8,138,33)
+      GridSize = 35
+      IconLines = 3
+      Border = False
     }
     Index = 5
-    Text = ("Configuración")
+    Text = ("Settings")
+    { IconView6 IconView
+      MoveScaled(0,0,145,74)
+      GridSize = 35
+      IconLines = 3
+      Border = False
+    }
     Index = 0
   }
   { Label1 Label
     MoveScaled(2,2,28,4)
     Font = Font["+6"]
     Foreground = &HFFFFFF&
-    Text = ("Aplicaciones")
+  }
+  { TextBox1 TextBox
+    MoveScaled(124,6,26,6)
+    Text = ("  Ejecutar")
+    Border = False
   }
 }

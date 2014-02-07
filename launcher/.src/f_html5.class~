@@ -1,0 +1,21 @@
+' Gambas class file
+
+
+Public Sub Form_Open()
+
+  Me.y = 45
+  Me.x = 70
+
+End
+
+Public Sub cerrar_Click()
+
+  Me.Close
+
+End
+
+Public Sub WebView1_MouseDown()
+
+  
+
+End

@@ -2,8 +2,20 @@
 
 { Form Form
   MoveScaled(0,0,64,64)
-  Picture = Picture["images/dandelion_flower-1920x1080.jpg"]
+  Picture = Picture["swiss_alps_night_sky-1920x1440.jpg"]
   Border = False
   Maximized = True
   SkipTaskbar = True
+  Arrangement = Arrange.Vertical
+  { Panel1 Panel
+    MoveScaled(6,5,24,24)
+    Expand = True
+    Arrangement = Arrange.Fill
+    { PictureBox1 PictureBox
+      MoveScaled(2,1,16,16)
+      Picture = Picture["swiss_alps_night_sky-1920x1440.jpg"]
+      Stretch = True
+      Alignment = Align.Center
+    }
+  }
 }

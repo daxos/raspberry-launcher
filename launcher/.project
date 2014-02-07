@@ -2,11 +2,13 @@
 # Compiled with Gambas 3.2.1
 Title=Launcher
 Startup=claseinicio
-Version=0.0.5
+Version=0.0.33
 Component=gb.image
 Component=gb.qt4
 Component=gb.form
 Component=gb.qt4.webkit
 Component=gb.web
 TabSize=2
+ControlPublic=1
+ModulePublic=1
 Packager=1

@@ -1,13 +1,25 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,177,93)
+  MoveScaled(0,0,181,108)
+  Icon = Picture["images/browser.png"]
   Border = False
+  FullScreen = True
   Arrangement = Arrange.Vertical
+  { HBox1 HBox
+    MoveScaled(0,0,119,6)
+    Background = &H0C0C0C&
+    { Label1 Label
+      MoveScaled(3,1,48,4)
+      Font = Font["+6"]
+      Foreground = &HFFFFFF&
+      Text = ("Lime Web Browser")
+    }
+  }
   { HBox2 HBox
-    MoveScaled(0,0,114,4)
+    MoveScaled(0,6,114,4)
     Visible = False
-    Background = &H3F3F37&
+    Background = &H0C0C0C&
     { TextBox1 TextBox
       MoveScaled(10,2,58,2)
     }
@@ -38,11 +50,12 @@
     }
   }
   { HBox4 HBox
-    MoveScaled(0,0,101,106)
+    MoveScaled(0,6,101,106)
+    Background = &H080C08&
     Expand = True
     { Panel5 Panel
       MoveScaled(0,4,11,99)
-      Background = &H292B25&
+      Background = &H312839&
       { PictureBox2 PictureBox
         MoveScaled(2,2,7,7)
         Picture = Picture["images/browser.png"]
@@ -112,7 +125,7 @@
       }
     }
     { TabStrip1 TabStrip
-      MoveScaled(11,5,83,43)
+      MoveScaled(11,3,83,43)
       Expand = True
       Arrangement = Arrange.Fill
       Closable = True

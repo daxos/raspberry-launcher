@@ -1,12 +1,16 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,136,6)
-  Background = &H1B1B1B&
+  MoveScaled(0,0,10,428.5714)
+  Background = &H0D0D0D&
   Border = False
   SkipTaskbar = True
-  { lanzador ToolButton
-    MoveScaled(2,0,6,6)
-    Picture = Picture["images/daxos_icon_64x64.png"]
+  { IconView1 IconView
+    MoveScaled(0,0,10,89)
+    Background = &H0C0C0C&
+    Foreground = Color.Background
+    Orientation = Arrange.Horizontal
+    IconLines = 1
+    Border = False
   }
 }

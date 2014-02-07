@@ -1,0 +1,125 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,107,81)
+  Border = False
+  Arrangement = Arrange.Vertical
+  { Panel1 Panel
+    MoveScaled(0,0,105,5)
+    Background = &H242425&
+    { Label1 Label
+      MoveScaled(38,-1,42,6)
+      Font = Font["Ubuntu,+4"]
+      Foreground = &HFFFFFF&
+      Text = ("Medusa Text Editor")
+    }
+  }
+  { TextArea1 TextArea
+    MoveScaled(0,5,65,66)
+    Background = &HDFDFDF&
+    Wrap = True
+    Border = False
+  }
+  { Panel3 Panel
+    MoveScaled(72,61,35,10)
+    Visible = False
+    Background = &H202020&
+    { traducir ToolButton
+      MoveScaled(1,0,8,9)
+      Picture = Picture["icon:/32/language"]
+    }
+    { seleccionar ToolButton
+      MoveScaled(11,0,8,9)
+      Background = &HF0F0F0&
+      ToolTip = ("Seleccionar todo")
+      Picture = Picture["icon:/32/select"]
+    }
+    { close1 ToolButton
+      MoveScaled(21,1,8,8)
+      Background = &HF0F0F0&
+      ToolTip = ("Cerrar")
+      Picture = Picture["icon:/32/close"]
+    }
+  }
+  { Panel2 Panel
+    MoveScaled(0,71,109,10)
+    Background = &H007FFF&
+    { SpinBox1 SpinBox
+      MoveScaled(79,9,6,4)
+      Visible = False
+    }
+    { PictureBox2 PictureBox
+      MoveScaled(0,0,107,10)
+      Picture = Picture["images/fondo-editor.png"]
+      Stretch = True
+    }
+    { copia2 ToolButton
+      MoveScaled(22,1,8,8)
+      Background = &HF0F0F0&
+      ToolTip = ("Copiar")
+      Picture = Picture["icon:/32/copy"]
+    }
+    { guadarcomo ToolButton
+      MoveScaled(11,1,8,8)
+      Background = &HF0F0F0&
+      ToolTip = ("Guardar Como")
+      Picture = Picture["icon:/32/save-as"]
+    }
+    { abrir2 ToolButton
+      MoveScaled(2,1,8,8)
+      Background = &HF0F0F0&
+      ToolTip = ("Abrir")
+      Picture = Picture["icon:/32/open"]
+    }
+    { cortar ToolButton
+      MoveScaled(32,1,8,8)
+      Background = &HF0F0F0&
+      ToolTip = ("Cortar")
+      Picture = Picture["icon:/32/cut"]
+    }
+    { pegar2 ToolButton
+      MoveScaled(42,1,8,8)
+      Background = &HF0F0F0&
+      ToolTip = ("Pegar")
+      Picture = Picture["icon:/32/paste"]
+    }
+    { deshacer2 ToolButton
+      MoveScaled(50,1,8,8)
+      Background = &HF0F0F0&
+      ToolTip = ("Deshacer")
+      Picture = Picture["icon:/32/undo"]
+    }
+    { rehacer2 ToolButton
+      MoveScaled(58,1,8,8)
+      Background = &HF0F0F0&
+      ToolTip = ("Rehacer")
+      Picture = Picture["icon:/32/redo"]
+    }
+    { disminuir ToolButton
+      MoveScaled(67,1,8,8)
+      Background = &HF0F0F0&
+      ToolTip = ("Zoom -")
+      Picture = Picture["icon:/32/zoom-out"]
+    }
+    { aumentar ToolButton
+      MoveScaled(76,1,8,8)
+      Background = &HF0F0F0&
+      ToolTip = ("Zoom +")
+      Picture = Picture["icon:/32/zoom-in"]
+    }
+    { close2 ToolButton
+      MoveScaled(95,1,8,8)
+      Background = &HF0F0F0&
+      ToolTip = ("Cerrar")
+      Picture = Picture["icon:/32/close"]
+    }
+    { SpinBox2 SpinBox
+      MoveScaled(99,2,6,4)
+      Visible = False
+    }
+    { herramientas ToolButton
+      MoveScaled(85,1,8,8)
+      Picture = Picture["icon:/32/menu"]
+    }
+  }
+}

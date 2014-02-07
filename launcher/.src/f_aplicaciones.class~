@@ -6,23 +6,40 @@ End
 
 Public Sub Form_Open()
 
+
 Label1.SetFocus
 IconView1.SetFocus
-Me.Center
-IconView1.Add("1", "Navegar por internet", Picture["images/firefox.png"])
-IconView1.Add("2", "Escribir documento", Picture["images/notepad.png"])
-IconView1.Add("5", "Escuchar música", Picture["images/music.png"])
-IconView1.Add("6", "Ver vídeos", Picture["images/video.png"])
+Label6.SetFocus
+WebView1.Zoom = 0.8
+Me.x = 70
 
-IconView2.Add("1", "Lxterminal", Picture["images/terminal.png"])
-IconView2.Add("2", "Leafpad", Picture["images/notepad.png"])
-IconView2.Add("3", "Thunar", Picture["images/thunar.png"])
-IconView2.Add("4", "Calculadora", Picture["images/calculator.png"])
+IconView1.Add("1", "Web browser", Picture["images/midori.svg"])
+IconView1.Add("2", "Write document", Picture["images/accessories-text-editor.svg"])
+IconView1.Add("5", "Music", Picture["images/multimedia-audio-player.svg"])
+IconView1.Add("6", "Watch video", Picture["images/multimedia-video-player.svg"])
 
-IconView3.Add("1", "Navegador Lima", Picture["images/firefox.png"])
-IconView3.Add("2", "Navegador Netsurf", Picture["images/navegador.png"])
+IconView2.Add("1", "Lxterminal", Picture["images/utilities-terminal.svg"])
+IconView2.Add("2", "Leafpad", Picture["images/accessories-text-editor.svg"])
+IconView2.Add("3", "Thunar", Picture["images/system-file-manager.svg"])
+IconView2.Add("4", "Calculator", Picture["images/calculator.png"])
 
+IconView3.Add("1", "Web Browser Lima", Picture["images/midori.svg"])
+IconView3.Add("2", "Web Browser Netsurf", Picture["images/navegador.png"])
+IconView3.Add("3", "Facebook", Picture["images/facebook.svg"])
+IconView3.Add("4", "Twitter", Picture["images/twitter.svg"])
+IconView3.Add("5", "Google +", Picture["images/googleplus.png"])
+
+IconView4.Add("1", "Mario", Picture["images/mario.png"])
+IconView4.Add("2", "Lunar Rescue", Picture["images/lunar.png"])
+IconView4.Add("3", "Solitarie", Picture["images/solitario.png"])
+IconView4.Add("4", "Turtle Rescue", Picture["images/turtle.png"])
+IconView4.Add("5", "Browser Pairs Game", Picture["images/pairs.jpeg"])
+
+IconView5.Add("1", "Music", Picture["images/multimedia-audio-player.svg"])
+IconView5.Add("2", "Watch video", Picture["images/multimedia-video-player.svg"])
 'Timer1.Enabled = True
+
+IconView6.Add("1", "Raspberry pi config", Picture["images/preferences-desktop.svg"])
 
 End
 
@@ -38,14 +55,16 @@ Public Sub IconView1_Click()
      Me.Close
      Case 2
        
-       Shell "leafpad"
+       f_editor.Show
        Me.Close
        
       Case 3
        
        
-      Case 4
+      Case 5
        
+         f_music.Show
+         Me.Close
        
        Case 6
          Dialog.Path = video
@@ -81,7 +100,7 @@ Dim titulos As Boolean
      Me.Close
      Case 2
        
-       Shell "leafpad"
+       f_editor.Show
        Me.Close
        
       Case 3
@@ -112,11 +131,128 @@ Dim titulos As Boolean
        Shell "netsurf-gtk %u"
        Me.Close
      
+      Case 3
+       f_html5.Show
+       f_html5.WebView1.Url = "http://m.facebook.com"
+       Me.close
+        
       Case 4
+       f_html5.Show
+       f_html5.WebView1.Url = "http://m.twitter.com"
+       Me.close
        
+      Case 5
+       f_html5.Show
+       f_html5.WebView1.Url = "https://plus.google.com/"
+       Me.close
+       
+       End Select
+        Endif
+
+End
+
+Public Sub IconView4_Click()
+
+Dim titulos As Boolean
+ Dim video As String 
+ 
+   If Not IsNull(IconView4.Current) Then
+    Select Case IconView4.Current.Key
+  Case 1
+     f_html5.Show
+     f_html5.WebView1.Url = "http://www.effectgames.com/effect/games/mariodemo/"
+     Me.Close
+     Case 2
+     f_html5.Show
+     f_html5.WebView1.Url = "http://bluesquishypenguins.com/games/lander/page.html"
+     Me.Close
+     
+      Case 3
+     f_html5.Show
+     f_html5.WebView1.Url = "http://pasjans-online.pl/"
+     Me.Close
+        
+      Case 4
+     f_html5.Show
+     f_html5.WebView1.Url = "http://www8.games.mobi/games/html5/turtle-rescue/index.html"
+     Me.Close
+     
+     Case 5
+     f_html5.Show
+     f_html5.WebView1.Url = "http://moztw.org/foxmosa/game/pairs/"
+     Me.Close
         
        
        End Select
         Endif
+
+End
+
+
+
+
+
+Public Sub limabrowser_Click()
+
+  f_navegador.Show
+  f_navegador.WebView1.Url = WebView1.Url
+  Me.Close
+
+End
+
+
+
+
+Public Sub IconView5_Click()
+
+ Dim titulos As Boolean
+ Dim video As String 
+ 
+   If Not IsNull(IconView5.Current) Then
+    Select Case IconView5.Current.Key
+     Case 1
+    
+        f_music.Show
+         Me.Close
+    
+     Case 2
+       
+       Dialog.Path = video
+         If Dialog.OpenFile() Then Return
+         video = Dialog.Path
+         Shell "lxterminal -e omxplayer -o hdmi " & video
+         Me.Close
+     
+   End Select
+        Endif
+
+End
+
+Public Sub IconView6_Click()
+
+Dim titulos As Boolean
+ Dim video As String 
+ 
+   If Not IsNull(IconView6.Current) Then
+    Select Case IconView6.Current.Key
+     Case 1
+    
+    Shell "gksudo leafpad /boot/config.txt"
+    Me.Close
+    
+     Case 2
+     
+   End Select
+        Endif
+
+End
+
+
+
+Public Sub TextBox1_Activate()
+
+Shell "" & textbox1.Text
+Me.Close
+textbox1.Text = "  Ejecutar"
 
 End

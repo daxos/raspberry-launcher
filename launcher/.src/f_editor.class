@@ -1,0 +1,190 @@
+' Gambas class file
+
+
+Private $sPath As String
+Private $bModify As Boolean
+Private $MX As Integer
+Private $MY As Integer
+
+Public Sub Form_Open()
+
+Me.Center
+
+End
+
+Public Sub form_MouseDown()
+
+  $MX = Mouse.ScreenX - Me.X
+  $MY = Mouse.ScreenY - Me.Y
+
+End
+' 
+Public Sub Form_MouseMove()
+
+  If Mouse.Left Then Me.Move(Mouse.ScreenX - $MX, Mouse.ScreenY - $MY)
+
+End
+
+Public Sub Panel2_MouseDown()
+
+  
+
+End
+
+Public Sub abrir2_Click()
+
+
+Dim arrCad As New String[]
+Dim c As String
+Dim ruta As String
+
+
+
+Dialog.Title = "Seleccione un archivo"
+
+Dialog.Filter = ["*.txt", "Texto", "*", "Todos Los Archivos", " *.sh", " ShellScript ", "*.html", " HTML "]
+
+If Not Dialog.OpenFile() Then
+
+ruta = Dialog.Path
+
+arrCad = Split(File.Load(ruta), "\n")
+
+Endif
+
+For Each c In arrCad
+
+TextArea1.Text &= c & "\n"
+
+Next
+
+End
+
+Public Sub close2_Click()
+
+Me.Close
+
+End
+
+Public Sub aumentar_Click()
+
+SpinBox2.value += 1
+
+End
+
+Public Sub disminuir_Click()
+
+SpinBox2.Value -= 1
+
+End
+
+Public Sub SpinBox2_Change()
+
+TextArea1.Font.Size = Last.Value
+  TextArea1.SetFocus
+
+End
+
+Public Sub seleccionar_Click()
+
+  TextArea1.SelectAll
+  panel3.Hide
+
+End
+
+Public Sub rehacer2_Click()
+
+  TextArea1.redo
+
+End
+
+Public Sub deshacer2_Click()
+
+  TextArea1.Undo
+
+End
+
+Public Sub pegar2_Click()
+
+  TextArea1.paste
+
+End
+
+Public Sub cortar_Click()
+
+  TextArea1.cut
+
+End
+
+Public Sub copia2_Click()
+
+TextArea1.copy
+
+End
+
+Public Sub guadarcomo_Click()
+
+  Dim destino As String ' cadena donde se guarda la ruta y nombre del archivo
+
+Save(True)
+
+End
+
+Public Sub Save(Optional bSaveAs As Boolean)
+  
+  If bSaveAs Or Not $sPath Then
+    If Dialog.SaveFile() Then Return
+    SetPath(Dialog.Path)
+  Endif
+  
+  File.Save($sPath, TextArea1.Text)
+  
+End
+
+Private Sub SetPath(sPath As String)
+
+  $sPath = sPath
+  'RefreshTitle
+
+End
+
+Public Sub Panel1_MouseDown()
+
+  $MX = Mouse.ScreenX - Me.X
+  $MY = Mouse.ScreenY - Me.Y
+
+End
+
+Public Sub Panel1_MouseMove()
+  
+If Mouse.Left Then Me.Move(Mouse.ScreenX - $MX, Mouse.ScreenY - $MY)
+  
+End
+
+
+Public Sub Form_DblClick()
+  
+ Panel1.Show
+  
+End
+
+
+Public Sub traducir_Click()
+
+  f_navegador.Show
+  f_navegador.WebView1.Url = "http://translate.google.es/?hl=es#en/es/" & TextArea1.Selection.Text
+  panel3.Hide
+
+End
+
+Public Sub herramientas_Click()
+
+  panel3.Show
+  
+End
+
+Public Sub close1_Click()
+
+  panel3.Hide
+
+End

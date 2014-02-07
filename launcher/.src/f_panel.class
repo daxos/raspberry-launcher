@@ -3,7 +3,13 @@
 
 Public Sub Form_Open()
 
-  
+IconView1.Add("1", "", Picture["Imagenes/daxos-logo.png"])
+IconView1.Add("6", "", Picture["Imagenes/carpeta.svg"])
+IconView1.Add("2", "", Picture["Imagenes/totem.svg"])
+IconView1.Add("3", "", Picture["Imagenes/web-browser.svg"])
+IconView1.Add("4", "", Picture["Imagenes/ooo-writer.svg"])
+IconView1.Add("7", "", Picture["Imagenes/logo.png"])
+IconView1.Add("5", "", Picture["Imagenes/apagar.svg"])
 
 End
 
@@ -14,5 +20,64 @@ If f_aplicaciones.Visible = True Then
   Else
     f_aplicaciones.Show
 Endif
+
+End
+
+Public Sub power_Click()
+
+  f_power.Show
+
+End
+
+Public Sub PictureBox1_MouseDown()
+
+If f_aplicaciones.Visible = True Then
+  f_aplicaciones.Hide 
+  Else
+    f_aplicaciones.Show
+Endif
+
+End
+
+Public Sub IconView1_Click()
+
+    Dim titulos As Boolean
+ Dim video As String 
+ 
+   If Not IsNull(IconView1.Current) Then
+    Select Case IconView1.Current.Key
+     Case 1
+     If f_aplicaciones.Visible = True Then
+       f_aplicaciones.hide
+       Else
+         f_aplicaciones.Show
+     Endif
+     IconView1.UnselectAll
+     Case 2
+       
+        Dialog.Path = video
+         If Dialog.OpenFile() Then Return
+         video = Dialog.Path
+         Shell "lxterminal -e omxplayer -o hdmi " & video
+         Me.Close
+         IconView1.UnselectAll
+       
+      Case 3
+       f_navegador.Show
+       IconView1.UnselectAll
+       
+      Case 4
+       
+         f_editor.Show
+         IconView1.UnselectAll
+         
+      Case 6
+       
+         Shell "thunar"
+         IconView1.UnselectAll   
+     
+    
+   End Select
+        Endif
 
 End

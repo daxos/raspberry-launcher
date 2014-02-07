@@ -1,0 +1,16 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,10,115)
+  Background = &H0C0C0C&
+  Border = False
+  SkipTaskbar = True
+  { IconView1 IconView
+    MoveScaled(0,10,10,61)
+    Background = &H0D0D0D&
+    Foreground = &HFBFBFB&
+    Orientation = Arrange.Horizontal
+    IconLines = 1
+    Border = False
+  }
+}
